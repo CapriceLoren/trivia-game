@@ -1,0 +1,8 @@
+.green {
+  /* box-shadow: 5px 10px green; */
+  background-color: green;
+}
+
+.red {
+  box-shadow: red;
+}
