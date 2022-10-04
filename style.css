@@ -1,8 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+body {
+  font-family: 'Handlee', cursive;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-family: 'Shadows Into Light', cursive;
+}
+
+.buttonDiv {
+  font-family: 'Handlee', cursive;
+  display: flex;
+  justify-content: center;
+}
+
+/* button:focus {
+  background-color: red;
+} */
+
+.triviaContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.template {
+  padding: 20px;
+
+  background-color: aqua;
+}
+
 .green {
-  /* box-shadow: 5px 10px green; */
-  background-color: green;
+  box-shadow: 2x 2px 2px rgb(0, 128, 0, 0.5);
+  /* background-color: green; */
 }
 
 .red {
-  box-shadow: red;
+  background-color: red;
 }
