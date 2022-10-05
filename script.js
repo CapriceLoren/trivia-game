@@ -7,6 +7,10 @@ let counter = 0
 let scoreDiv = document.querySelector(".scoreDiv")
 let correctBtn = document.getElementsByClassName("correct")
 let wrongBtn = document.getElementsByClassName("wrong")
+let nextBtn = document.querySelector(".next")
+let scoreCounter = document.querySelector(".scoreCounter")
+let triviaTitle = document.querySelector(".triviaTitle")
+let endDiv = document.querySelector(".endDiv")
 
 fetch(url)
   .then((res) => res.json())
@@ -21,7 +25,7 @@ fetch(url)
 
       let htmlTemplate = `
           <div class="template">
-              <h2>${cards[0].category}</h2>
+              <h2>${cards[counter].category}</h2>
               <p>Question: ${cards[counter].question}</p>
               <button class="correct">${cards[counter].correct_answer}</button>
               <button class="wrong">${cards[counter].incorrect_answers[0]}</button>
@@ -38,7 +42,11 @@ fetch(url)
   
         counter++
         triviaCard()
+      } else if (counter === 10) {
+        triviaContainer.removeChild(triviaContainer.firstElementChild)
+        gameOver()
       }
+      
     })
   })
 
@@ -55,7 +63,6 @@ fetch(url)
     } else {
       // this.classList.add("red")
     }
-    console.log(wrongBtn)
 
     for(let i = 0; i < wrongBtn.length; i++)
     {
@@ -66,8 +73,25 @@ fetch(url)
     {
         correctBtn[i].classList.add('green');
     }
-
   })
+
+console.log(counter)
+
+function gameOver() {
+  if (counter === 10) {
+      
+    let finalScore = `
+      <h1> Game Over!</h1>
+      <p> Your Score: ${score} out of 10</p>
+    `;
+
+    nextBtn.classList.add("hide")
+    triviaTitle.classList.add("hide")
+    scoreDiv.classList.add("hide")
+    
+    endDiv.insertAdjacentHTML("beforeend", finalScore);
+    }
+  }
 
 
 

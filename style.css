@@ -32,6 +32,11 @@ h1 {
   background-color: aqua;
 }
 
+.endDiv {
+  display: flex;
+  justify-content: center;
+}
+
 .green {
   box-shadow: 2x 2px 2px rgb(0, 128, 0, 0.5);
   /* background-color: green; */
@@ -39,4 +44,8 @@ h1 {
 
 .red {
   background-color: red;
+}
+
+.hide {
+  display: none;
 }
