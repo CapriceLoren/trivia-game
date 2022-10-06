@@ -78,7 +78,6 @@ fetch(url)
 console.log(counter)
 
 function gameOver() {
-  if (counter === 10) {
       
     let finalScore = `
       <h1> Game Over!</h1>
@@ -89,9 +88,8 @@ function gameOver() {
     triviaTitle.classList.add("hide")
     scoreDiv.classList.add("hide")
     
-    endDiv.insertAdjacentHTML("beforeend", finalScore);
+    endDiv.insertAdjacentHTML("afterend", finalScore);
     }
-  }
 
 
 
@@ -107,6 +105,8 @@ function gameOver() {
 
   //if counter = 10, game over
   //show score and comment
+
+  //fix 11 out of ten. only allow score to go up once per question
 
 
 
