@@ -11,6 +11,7 @@ let nextBtn = document.querySelector(".next")
 let scoreCounter = document.querySelector(".scoreCounter")
 let triviaTitle = document.querySelector(".triviaTitle")
 let endDiv = document.querySelector(".endDiv")
+let refreshBtn = document.querySelector(".refresh")
 
 fetch(url)
   .then((res) => res.json())
@@ -33,7 +34,7 @@ fetch(url)
               <button class="wrong">${cards[counter].incorrect_answers[2]}</button>
           </div>
           `;
-    
+      
       triviaContainer.removeChild(triviaContainer.firstElementChild)
       triviaContainer.insertAdjacentHTML("beforeend", htmlTemplate);
     }
@@ -42,11 +43,14 @@ fetch(url)
   
         counter++
         triviaCard()
-      } else if (counter === 10) {
-        triviaContainer.removeChild(triviaContainer.firstElementChild)
+      } else if (counter === 9) {
+        setTimeout(removeContainer, 2000)
+
+        function removeContainer () {
+        triviaContainer.removeChild(triviaContainer.firstElementChild)}
         gameOver()
       }
-      
+      console.log(counter)
     })
   })
 
@@ -59,10 +63,7 @@ fetch(url)
     if (e.target.matches(".correct")) {
       score++
       scoreDiv.innerHTML = `Score: ${score}`
-      // this.classList.add("green")
-    } else {
-      // this.classList.add("red")
-    }
+    } 
 
     for(let i = 0; i < wrongBtn.length; i++)
     {
@@ -75,38 +76,36 @@ fetch(url)
     }
   })
 
-console.log(counter)
-
 function gameOver() {
       
     let finalScore = `
       <h1> Game Over!</h1>
       <p> Your Score: ${score} out of 10</p>
-    `;
 
+    `;
+  
+    refreshBtn.classList.remove("hide")
     nextBtn.classList.add("hide")
     triviaTitle.classList.add("hide")
     scoreDiv.classList.add("hide")
     
     endDiv.insertAdjacentHTML("afterend", finalScore);
-    }
+}
+    
+document.addEventListener("click", e => {
+  if (e.target.matches(".refresh")) {
+    window.location.reload();
+  }
+})
 
+console.log(refreshBtn)
 
 
   // console.log(score)
 
-  //push api data into trivia card
-  //put answers into buttons
-  //one button has point, all others 0
-  //turn incorrect buttons red after answer selected
-  //10 questions, score of 8 passes (levels?)
-  //refresh button for new questions
-  //gold tier: skip question, track score even on reload
 
-  //if counter = 10, game over
-  //show score and comment
-
-  //fix 11 out of ten. only allow score to go up once per question
+  // center triva and refresh buttons
+  // put padding around trivia buttons
 
 
 
