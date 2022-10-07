@@ -12,26 +12,37 @@ let scoreCounter = document.querySelector(".scoreCounter")
 let triviaTitle = document.querySelector(".triviaTitle")
 let endDiv = document.querySelector(".endDiv")
 let refreshBtn = document.querySelector(".refresh")
+let triviaBtn = document.getElementsByClassName("triviaBtn")
 
 fetch(url)
   .then((res) => res.json())
   .then((res) => {
-    // console.log(res.results[0].category)
     cards = res.results
     for (let i = 0; i < res.results.length; i++){
       triviaCard()
     }
 
     function triviaCard() {
+      let additionalHTML = () => {
+        if (cards[counter].type === "multiple") {
+          return (
+            `
+              <button class="triviaBtn wrong">${cards[counter].incorrect_answers[1]}</button>
+              <button class="triviaBtn wrong">${cards[counter].incorrect_answers[2]}</button>
+            `
+          )
+        } else {
+          return ""
+        }
+      }
 
       let htmlTemplate = `
           <div class="template">
               <h2>${cards[counter].category}</h2>
               <p>Question: ${cards[counter].question}</p>
-              <button class="correct">${cards[counter].correct_answer}</button>
-              <button class="wrong">${cards[counter].incorrect_answers[0]}</button>
-              <button class="wrong">${cards[counter].incorrect_answers[1]}</button>
-              <button class="wrong">${cards[counter].incorrect_answers[2]}</button>
+              <button class="triviaBtn correct">${cards[counter].correct_answer}</button>
+              <button class="triviaBtn wrong">${cards[counter].incorrect_answers[0]}</button>
+              ${additionalHTML()}
           </div>
           `;
       
@@ -50,7 +61,6 @@ fetch(url)
         triviaContainer.removeChild(triviaContainer.firstElementChild)}
         gameOver()
       }
-      console.log(counter)
     })
   })
 
@@ -78,10 +88,11 @@ fetch(url)
 
 function gameOver() {
       
-    let finalScore = `
+  let finalScore = `
+    <div class = "final">
       <h1> Game Over!</h1>
       <p> Your Score: ${score} out of 10</p>
-
+    </div>
     `;
   
     refreshBtn.classList.remove("hide")
@@ -98,14 +109,13 @@ document.addEventListener("click", e => {
   }
 })
 
-console.log(refreshBtn)
 
 
-  // console.log(score)
 
-
-  // center triva and refresh buttons
+  // center triva buttons
   // put padding around trivia buttons
+  // randomize trivia buttons
+  // change button hover
 
 
 

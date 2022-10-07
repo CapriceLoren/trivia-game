@@ -38,13 +38,16 @@ h1 {
 
 button {
   all: unset;
+  flex-direction: column;
   border-radius: 30px;
   padding: 10px;
   background-color: white;
+  margin: 5px;
+  text-align: center;
 }
 
 button:hover {
-  filter: invert(100%);
+  transform: scale(1, -1);
 }
 
 button:active {
@@ -84,9 +87,13 @@ button:active {
   align-items: center;
 }
 
-/* .refresh {
-  text-align: center;
-} */
+.final {
+  margin: 0 auto;
+  background-color: rgb(197, 255, 255, 0.5);
+  border-radius: 20px;
+  max-width: 350px;
+  padding: 10px;
+}
 
 p {
 display: flex;
