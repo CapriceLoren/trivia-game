@@ -62,6 +62,10 @@ button:active {
   margin: 10px;
 }
 
+.btn-container {
+  text-align: center;
+}
+
 .scoreDiv {
   display: flex;
   justify-content: center;
